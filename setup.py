@@ -1,6 +1,6 @@
 from distutils.core import setup
 
-version = "0.1"
+version = "0.1.1"
 install_requires = []
 with open("requirements.txt") as requirements_file:
     install_requires.extend(requirements_file.readlines())

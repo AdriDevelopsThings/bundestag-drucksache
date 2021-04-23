@@ -1,5 +1,8 @@
 /venv
 /.idea
+
 /build
 /dist
+/MANIFEST
+
 /test.py

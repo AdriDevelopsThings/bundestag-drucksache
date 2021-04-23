@@ -1,11 +1,14 @@
+from os import path
 from setuptools import setup
 
-version = "0.1.2"
+version = "0.1.4"
+this_directory = path.abspath(path.dirname(__file__))
+
 install_requires = []
-with open("requirements.txt") as requirements_file:
+with open(path.join(this_directory, "requirements.txt")) as requirements_file:
     install_requires.extend(requirements_file.readlines())
 long_description = ""
-with open("README.md", encoding="utf-8") as readme_file:
+with open(path.join(this_directory, "README.md"), encoding="utf-8") as readme_file:
     long_description += readme_file.read()
 setup(
     name="bundestag-drucksache",

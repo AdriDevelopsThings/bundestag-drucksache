@@ -4,6 +4,10 @@ Download and find official Drucksache objects from the bundestag. Search yoursel
 
 # Installation
 
+```shell
+pip install bundestag-drucksache
+```
+
 # How to use?
 
 ## Drucksache

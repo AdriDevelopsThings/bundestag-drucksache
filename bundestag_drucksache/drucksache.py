@@ -7,7 +7,7 @@ from bundestag_drucksache.config import get_config_object
 
 class Drucksache:
     @staticmethod
-    def get(identification):
+    def get(identification, **config_kwargs):
         """
         Get a Drucksache object by the identification.
         :param identification: Note following syntax: '{legislaturperiode}/{ongoing_number}'. The parliament structure
@@ -17,7 +17,7 @@ class Drucksache:
         if type(identification) == str and "/" in identification:
             identification = identification.split("/")
             if len(identification) == 2:
-                return Drucksache(int(identification[0]), int(identification[1]))
+                return Drucksache(int(identification[0]), int(identification[1]), **config_kwargs)
 
         raise TypeError(
             "'identification' argument should have the following string syntax: '{legislaturperiode}/{"
@@ -25,7 +25,7 @@ class Drucksache:
         )
 
     @staticmethod
-    def parse_from_link(link: str):
+    def parse_from_link(link: str, **config_kwargs):
         """
         Parse the Drucksache object by a link to the Drucksache pdf file.
         :param link: The link to the pdf file of the Drucksache. Note that you have to leave
@@ -40,7 +40,7 @@ class Drucksache:
                     full_number = pdf.replace(".pdf", "")
                     if len(full_number) >= 5:
                         full_number = full_number[:-5] + "/" + full_number[-5:]
-                        return Drucksache.get(full_number)
+                        return Drucksache.get(full_number, **config_kwargs)
                 except TypeError:
                     pass
 
@@ -97,6 +97,7 @@ class Drucksache:
         """
         Download the Drucksache pdf to a file.
         :param file: The opened file (use a binary open mode like 'wb') or the filename.
+            (You can use any object, that can be closed (if you enable close_file) and that can be written with bytes.
         :param close_file: Should the file be closed after writing?
         :return: The opened/closed file. (You don't have to save it)
         """

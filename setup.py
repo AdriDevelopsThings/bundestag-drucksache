@@ -1,16 +1,21 @@
-from distutils.core import setup
+from setuptools import setup
 
-version = "0.1.1"
+version = "0.1.2"
 install_requires = []
 with open("requirements.txt") as requirements_file:
     install_requires.extend(requirements_file.readlines())
-
+long_description = ""
+with open("README.md", encoding="utf-8") as readme_file:
+    long_description += readme_file.read()
 setup(
     name="bundestag-drucksache",
     packages=["bundestag_drucksache"],
     version=version,
     license="gpl-3.0",
-    description="Download and find official Drucksache objects from the bundestag. Search yourself there: https://pdok.bundestag.de",
+    description="Download and find official Drucksache objects from the bundestag. Search yourself there: "
+                "https://pdok.bundestag.de",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
     author="adridoesthings",
     author_email="github@adridoesthings.com",
     url="https://github.com/AdriDevelopsThings/bundestag-drucksache",
@@ -28,5 +33,5 @@ setup(
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
-    ]
+    ],
 )
